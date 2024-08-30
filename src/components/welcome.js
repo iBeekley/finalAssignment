@@ -8,9 +8,9 @@ function WelcomePage(){
                 <h2>Welcome to F1 Data Center</h2>
             </CardHeader>
             <CardBody>
-                <p1>
+                <p>
                     F1 Data Center is a website dedicated to tracking current and past from Forumula One events. The site's goal is to immortalise every piece of information surrounding the sport no matter how small. 
-                </p1>
+                </p>
             </CardBody>
         </Card>
     )

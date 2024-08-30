@@ -23,8 +23,8 @@ function Standings() {
 
     // Update points in the backend
     function updatePoints(driverId, newPoints) {
-        fetch('https://66c6bda78b2c10445bc7881b.mockapi.io/standings', {
-            method: 'PATCH',
+        fetch(`${apiEndpoint}/${driverId}`, {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -37,7 +37,12 @@ function Standings() {
             return response.json();
         })
         .then(updatedDriver => {
-            // Handle successful update
+            setStandings(prevStandings => {
+                const updatedStandings = prevStandings.map(driver =>
+                    driver.driverId === driverId ? updatedDriver : driver
+                );
+                return updatedStandings.sort((a, b) => b.points - a.points);
+            });
         })
         .catch(error => {
             console.error("Error updating points:", error);
